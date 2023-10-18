@@ -1,25 +1,11 @@
-import MemesData from "../../../public/MemesData"
+"use client";
 
-
-function getRandomMeme(){
-    const randomIndex = Math.floor(Math.random() * MemesData.data.memes.length)
-    return MemesData.data.memes[randomIndex].url
-}
-const MemeDisplay = () =>{
-    return(
-        <div>
-            <SingleMeme />
-        </div>
-    )
-}
-
-const SingleMeme = () => {
-    const url = getRandomMeme()
+const MemeDisplay = (prop) => {
     return (
         <div className="rounded-sm">
-            <img className = "w-[400px] mt-5 ml-auto mr-auto " src={url} />
+            <img className = "w-[400px] mt-5 ml-auto mr-auto " src={prop.url} />
         </div>
     )
 }
 
-export default MemeDisplay
+export default MemeDisplay 
