@@ -11,10 +11,17 @@ function getRandomMeme(){
   }
 
   export default function Home() {
-    const [memeImage, setMemeImage] = useState(""); 
+    //const [memeImage, setMemeImage] = useState("https://media.sproutsocial.com/uploads/meme-example.jpg"); 
+    
+    const [meme,setMeme] = useState({
+      topText:"",
+      bottomText:"",
+      memeImage:"https://media.sproutsocial.com/uploads/meme-example.jpg"
+    })
+
+
     function RandomMeme(){
-      setMemeImage(getRandomMeme())
-      return memeImage
+      setMeme(prevmeme => ({...prevmeme, memeImage:getRandomMeme()}))
     }
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
@@ -22,7 +29,7 @@ function getRandomMeme(){
         <NavBar />
         <Meme />
         <button onClick={() => RandomMeme()} className="w-[470px] h-[40px] rounded-md bg-gradient-to-r from-[#672280] to-[#A626D3] text-white font-medium p-[4px]">Get a new meme image  🖼</button>
-        <MemeDisplay  url = { memeImage } />
+        <MemeDisplay  url = { meme.memeImage } />
       </div>
     </main>
   )
